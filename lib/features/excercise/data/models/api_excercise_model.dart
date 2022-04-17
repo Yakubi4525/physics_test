@@ -1,4 +1,5 @@
-import 'package:physics_test/features/domain/enteties/excercise.dart';
+
+import 'package:physics_test/features/excercise/domain/enteties/excercise.dart';
 
 class ApiExerciseModel extends ExerciseModel {
   ApiExerciseModel({

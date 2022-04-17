@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:physics_test/features/ui/screens/excercies_screen.dart';
+import 'package:physics_test/features/excercise/ui/screens/excercies_screen.dart';
 
 import 'injection.dart';
 

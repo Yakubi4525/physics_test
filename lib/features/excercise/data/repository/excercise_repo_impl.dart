@@ -2,13 +2,13 @@ import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
 import 'package:physics_test/core/error/exceptions.dart';
 import 'package:physics_test/core/network_check/network_info.dart';
-import 'package:physics_test/features/data/datasources/local/excercise_local_source.dart';
-import 'package:physics_test/features/domain/controllers/excercise_controller.dart';
-import 'package:physics_test/features/domain/enteties/excercise.dart';
-import 'package:physics_test/core/error/failures.dart';
+ import 'package:physics_test/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:physics_test/features/domain/repository/excercise_repository.dart';
-
+import 'package:physics_test/features/excercise/data/datasources/local/excercise_local_source.dart';
+import 'package:physics_test/features/excercise/domain/controllers/excercise_controller.dart';
+import 'package:physics_test/features/excercise/domain/enteties/excercise.dart';
+import 'package:physics_test/features/excercise/domain/repository/excercise_repository.dart';
+ 
 @LazySingleton(as: ExcerciseRepo)
 class ExcerciseRepoImpl extends ExcerciseRepo {
   final LocalExcerciseSource localRepo;

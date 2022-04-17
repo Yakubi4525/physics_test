@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:physics_test/core/components/buttons/accent_button.dart';
 import 'package:physics_test/core/style/color.dart';
-import 'package:physics_test/features/domain/enteties/excercise.dart';
+import 'package:physics_test/features/excercise/domain/enteties/excercise.dart';
 
 class SuperSet extends StatefulWidget {
   final Function onAcept;

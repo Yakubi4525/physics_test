@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
 import 'package:physics_test/core/error/failures.dart';
 import 'package:physics_test/core/logger/logger_impl.dart';
-import 'package:physics_test/features/domain/controllers/excercise_controller.dart';
-import 'package:physics_test/features/domain/enteties/excercise.dart';
-import 'package:physics_test/features/domain/repository/excercise_repository.dart';
+import 'package:physics_test/features/excercise/domain/controllers/excercise_controller.dart';
+import 'package:physics_test/features/excercise/domain/enteties/excercise.dart';
+import 'package:physics_test/features/excercise/domain/repository/excercise_repository.dart';
 
 part 'excercise_event.dart';
 part 'excercise_state.dart';

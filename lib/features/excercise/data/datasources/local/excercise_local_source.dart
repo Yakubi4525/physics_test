@@ -1,5 +1,6 @@
-import 'package:physics_test/features/data/models/api_excercise_model.dart';
-import 'package:physics_test/features/domain/enteties/excercise.dart';
+
+import 'package:physics_test/features/excercise/data/models/api_excercise_model.dart';
+import 'package:physics_test/features/excercise/domain/enteties/excercise.dart';
 
 abstract class LocalExcerciseSource {
   ///Retruns a list of [Excercise] objects if not empty

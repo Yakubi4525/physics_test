@@ -9,12 +9,13 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import 'core/network_check/network_info.dart' as _i5;
 import 'core/network_check/netwwork_info_impl.dart' as _i6;
-import 'features/data/datasources/local/excercise_local_source.dart' as _i3;
-import 'features/data/datasources/local/excercise_local_source_impl.dart'
+import 'features/excercise/data/datasources/local/excercise_local_source.dart'
+    as _i3;
+import 'features/excercise/data/datasources/local/excercise_local_source_impl.dart'
     as _i4;
-import 'features/data/repository/excercise_repo_impl.dart' as _i8;
-import 'features/domain/repository/excercise_repository.dart' as _i7;
-import 'features/ui/bloc/excercise_bloc.dart'
+import 'features/excercise/data/repository/excercise_repo_impl.dart' as _i8;
+import 'features/excercise/domain/repository/excercise_repository.dart' as _i7;
+import 'features/excercise/ui/bloc/excercise_bloc.dart'
     as _i9; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars

@@ -1,11 +1,12 @@
 import 'package:injectable/injectable.dart';
 import 'package:physics_test/core/logger/logger_impl.dart';
-import 'package:physics_test/features/data/datasources/local/excercise_local_source.dart';
-import 'package:physics_test/features/data/models/api_excercise_model.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 
-import 'package:physics_test/features/domain/enteties/excercise.dart';
+import 'package:physics_test/features/excercise/data/datasources/local/excercise_local_source.dart';
+import 'package:physics_test/features/excercise/data/models/api_excercise_model.dart';
+import 'package:physics_test/features/excercise/domain/enteties/excercise.dart';
+
 
 const excerciesModels = 'lib/core/json_datas/exercises.json';
 

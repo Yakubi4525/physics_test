@@ -5,10 +5,10 @@ import 'package:physics_test/core/components/bottomsheets/super_set.dart';
 import 'package:physics_test/core/components/loading/circle_loading.dart';
 import 'package:physics_test/core/snack/snack_widget.dart';
 import 'package:physics_test/core/style/color.dart';
-import 'package:physics_test/features/domain/controllers/excercise_controller.dart';
-import 'package:physics_test/features/ui/bloc/excercise_bloc.dart';
-import 'package:physics_test/features/ui/widgets/bottom_button.dart';
-import 'package:physics_test/features/ui/widgets/exercise_container.dart';
+import 'package:physics_test/features/excercise/domain/controllers/excercise_controller.dart';
+import 'package:physics_test/features/excercise/ui/bloc/excercise_bloc.dart';
+import 'package:physics_test/features/excercise/ui/widgets/bottom_button.dart';
+import 'package:physics_test/features/excercise/ui/widgets/exercise_container.dart';
 import 'package:physics_test/injection.dart';
 
 class ExcerciseScreen extends StatefulWidget {
