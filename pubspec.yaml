@@ -45,6 +45,7 @@ dependencies:
   freezed_annotation: ^0.15.0
   data_connection_checker: ^0.3.4
   dio: ^4.0.0
+  get: ^4.6.1
 
 dev_dependencies:
   flutter_test:

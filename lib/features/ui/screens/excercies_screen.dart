@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:physics_test/core/components/bottomsheets/super_set.dart';
 import 'package:physics_test/core/components/loading/circle_loading.dart';
 import 'package:physics_test/core/snack/snack_widget.dart';
 import 'package:physics_test/core/style/color.dart';
-import 'package:physics_test/features/domain/enteties/excercise.dart';
+import 'package:physics_test/features/domain/controllers/excercise_controller.dart';
 import 'package:physics_test/features/ui/bloc/excercise_bloc.dart';
+import 'package:physics_test/features/ui/widgets/bottom_button.dart';
+import 'package:physics_test/features/ui/widgets/exercise_container.dart';
 import 'package:physics_test/injection.dart';
 
 class ExcerciseScreen extends StatefulWidget {
@@ -15,6 +19,7 @@ class ExcerciseScreen extends StatefulWidget {
 }
 
 class _ExcerciseScreenState extends State<ExcerciseScreen> {
+  var excerciseController = Get.put(ExcercieController());
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -40,17 +45,32 @@ class _ExcerciseScreenState extends State<ExcerciseScreen> {
             if (state.excercises.isNotEmpty) {
               return Stack(
                 children: [
-                  ReorderableListView(
-                    children: [
-                      for (final item in state.excercises) buildListTileItem(item)
-                    ],
-                    onReorder: (oldIndex, newIndex) {
-                      context.read<ExcerciseBloc>().add(
-                            ExcerciseEvent.updateListOfModels(
-                              oldIndex: oldIndex,
-                              newIndex: newIndex,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 20, bottom: 20, right: 16, left: 16),
+                    child: ReorderableListView(
+                      children: [
+                        for (final item in state.excercises)
+                          Container(
+                            key: ValueKey(item),
+                            child: ExcerciseItem(
+                              item: item,
                             ),
-                          );
+                          ),
+                      ],
+                      onReorder: (oldIndex, newIndex) {
+                        context.read<ExcerciseBloc>().add(
+                              ExcerciseEvent.updateListOfModels(
+                                oldIndex: oldIndex,
+                                newIndex: newIndex,
+                              ),
+                            );
+                      },
+                    ),
+                  ),
+                  BottomButton(
+                    onTap: () {
+                      openMap();
                     },
                   ),
                 ],
@@ -66,36 +86,21 @@ class _ExcerciseScreenState extends State<ExcerciseScreen> {
     );
   }
 
-  Widget buildListTileItem(ExerciseModel item) {
-    return ListTile(
-      key: ValueKey(item),
-      title: Text(
-        "Упражнения № ${item.id}",
-        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-      ),
-      subtitle: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "Order id ${item.order}",
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: kBlackColor,
-            ),
-          ),
-          item.orderPrefix!.isNotEmpty
-              ? Text(
-                  "Order Prefix id ${item.orderPrefix}",
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: kBlackColor,
-                  ),
-                )
-              : Container(),
-        ],
-      ),
+  void openMap() async {
+    await showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        return SuperSet(
+          onAcept: () {
+            setState(() {});
+          },
+          onCancel: () {},
+          listofExcercise: excerciseController.listOfModels,
+        );
+      },
     );
   }
 }

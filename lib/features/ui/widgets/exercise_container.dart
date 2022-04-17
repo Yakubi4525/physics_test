@@ -3,38 +3,44 @@ import 'package:physics_test/core/style/color.dart';
 import 'package:physics_test/features/domain/enteties/excercise.dart';
 
 class ExcerciseItem extends StatelessWidget {
-  final ExerciseModel model;
-  const ExcerciseItem({Key? key, required this.model}) : super(key: key);
+  final ExerciseModel item;
+  const ExcerciseItem({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: kWhiteColor,
-        boxShadow: [
-          BoxShadow(
-            color: const Color.fromARGB(255, 214, 214, 214).withOpacity(0.4),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
+    return Padding(
+      padding:  EdgeInsets.only(top: 8, bottom: 8, left: item.orderPrefix!.isNotEmpty ? 32: 0),
+      child: Container(
+        decoration: BoxDecoration(
+            color: kWhiteColor, borderRadius: BorderRadius.circular(16)),
+        child: ListTile(
+          title: Text(
+            "Упражнения № ${item.id}",
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                Text("Упражнение id ${model.id}"),
-                Text("Order id ${model.order}"),
-              ],
-            ),
-            model.orderPrefix!.isNotEmpty
-                ? Text("OrderPrefix id ${model.orderPrefix}")
-                : Container(),
-          ],
+          subtitle: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Order id ${item.order}",
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: kBlackColor,
+                ),
+              ),
+              item.orderPrefix!.isNotEmpty
+                  ? Text(
+                      "Order Prefix id ${item.orderPrefix}",
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: kBlackColor,
+                      ),
+                    )
+                  : Container(),
+            ],
+          ),
         ),
       ),
     );

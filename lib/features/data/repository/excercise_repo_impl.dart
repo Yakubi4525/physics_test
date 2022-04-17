@@ -1,7 +1,9 @@
+import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
 import 'package:physics_test/core/error/exceptions.dart';
 import 'package:physics_test/core/network_check/network_info.dart';
 import 'package:physics_test/features/data/datasources/local/excercise_local_source.dart';
+import 'package:physics_test/features/domain/controllers/excercise_controller.dart';
 import 'package:physics_test/features/domain/enteties/excercise.dart';
 import 'package:physics_test/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
@@ -11,6 +13,7 @@ import 'package:physics_test/features/domain/repository/excercise_repository.dar
 class ExcerciseRepoImpl extends ExcerciseRepo {
   final LocalExcerciseSource localRepo;
   final NetworkInfo networkInfo;
+  var excerciseController = Get.put(ExcercieController());
 
   ExcerciseRepoImpl({required this.localRepo, required this.networkInfo});
 
@@ -20,6 +23,9 @@ class ExcerciseRepoImpl extends ExcerciseRepo {
     if (hasConnection) {
       try {
         final excercises = await localRepo.getExcercises();
+        excerciseController.updateListofExcercise(
+          models: excercises,
+        );
         return right(excercises);
       } on ServerException catch (e) {
         return left(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kMainColor = Color(0xFF5C61EB);
+const kMainColor = Colors.green;
 const kGreColor = Color(0xFF797979);
 const kWhiteColor = Color(0xFFFFFFFF);
 const kBlackColor = Color(0xFF000000);
