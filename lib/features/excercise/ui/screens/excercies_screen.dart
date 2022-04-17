@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:physics_test/core/components/bottomsheets/super_set.dart';
 import 'package:physics_test/core/components/loading/circle_loading.dart';
 import 'package:physics_test/core/snack/snack_widget.dart';
 import 'package:physics_test/core/style/color.dart';
@@ -9,6 +8,7 @@ import 'package:physics_test/features/excercise/domain/controllers/excercise_con
 import 'package:physics_test/features/excercise/ui/bloc/excercise_bloc.dart';
 import 'package:physics_test/features/excercise/ui/widgets/bottom_button.dart';
 import 'package:physics_test/features/excercise/ui/widgets/exercise_container.dart';
+import 'package:physics_test/features/excercise/ui/widgets/super_set.dart';
 import 'package:physics_test/injection.dart';
 
 class ExcerciseScreen extends StatefulWidget {

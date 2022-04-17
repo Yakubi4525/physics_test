@@ -68,7 +68,6 @@ class ExcerciseBloc extends Bloc<ExcerciseEvent, ExcerciseState> {
             emit(
               state.copyWith(
                 excercises: excerciseController.updateList(
-                  oldlist: listOfModels,
                   oldIndex: value.oldIndex,
                   newIndex: value.newIndex,
                 ),
