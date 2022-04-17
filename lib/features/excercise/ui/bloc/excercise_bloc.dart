@@ -1,3 +1,4 @@
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -59,6 +60,7 @@ class ExcerciseBloc extends Bloc<ExcerciseEvent, ExcerciseState> {
                   state.copyWith(
                     excercises: right,
                     isSubmitting: false,
+                    showWarninSuperSet: false,
                   ),
                 );
               },
@@ -72,8 +74,45 @@ class ExcerciseBloc extends Bloc<ExcerciseEvent, ExcerciseState> {
                   newIndex: value.newIndex,
                 ),
                 isSubmitting: false,
+                showWarninSuperSet: false,
               ),
             );
+          },
+          removeFromSuperSet: (value) async {
+            emit(
+              state.copyWith(
+                excercises:
+                    excerciseController.deleteFromSuperSet(index: value.index),
+                isSubmitting: false,
+                showWarninSuperSet: false,
+              ),
+            );
+          },
+          createuperSet: (value) async {
+            emit(
+              state.copyWith(
+                isSubmitting: true,
+                excercises: excerciseController.listOfModels,
+                showWarninSuperSet: false,
+              ),
+            );
+            if (excerciseController.checkForSuperSet()) {
+              emit(
+                state.copyWith(
+                    showWarninSuperSet: true,
+                    isSubmitting: false,
+                    excercises: excerciseController.listOfModels),
+              );
+            } else {
+              emit(
+                state.copyWith(
+                  excercises:
+                      excerciseController.createSuperSet(index: value.index),
+                  isSubmitting: false,
+                  showWarninSuperSet: false,
+                ),
+              );
+            }
           },
         );
       },

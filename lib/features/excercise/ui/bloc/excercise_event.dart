@@ -7,4 +7,11 @@ class ExcerciseEvent with _$ExcerciseEvent {
     required int oldIndex,
     required int newIndex,
   }) = _UpdateList;
+    const factory ExcerciseEvent.removeFromSuperSet({
+ required int index,
+  }) = _RemoveFromSuperSet;
+  const factory ExcerciseEvent.createuperSet({
+ required int index,
+ required ExerciseModel model,
+  }) = _CreateSuperSet;
 }

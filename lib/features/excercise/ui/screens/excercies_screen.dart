@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -7,9 +10,12 @@ import 'package:physics_test/core/style/color.dart';
 import 'package:physics_test/features/excercise/domain/controllers/excercise_controller.dart';
 import 'package:physics_test/features/excercise/ui/bloc/excercise_bloc.dart';
 import 'package:physics_test/features/excercise/ui/widgets/bottom_button.dart';
+import 'package:physics_test/features/excercise/ui/widgets/dismissible_bg.dart';
 import 'package:physics_test/features/excercise/ui/widgets/exercise_container.dart';
+import 'package:physics_test/features/excercise/ui/widgets/sliding_up_panel.dart';
 import 'package:physics_test/features/excercise/ui/widgets/super_set.dart';
 import 'package:physics_test/injection.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ExcerciseScreen extends StatefulWidget {
   const ExcerciseScreen({Key? key}) : super(key: key);
@@ -20,6 +26,7 @@ class ExcerciseScreen extends StatefulWidget {
 
 class _ExcerciseScreenState extends State<ExcerciseScreen> {
   var excerciseController = Get.put(ExcercieController());
+  PanelController panelController = PanelController();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -35,9 +42,15 @@ class _ExcerciseScreenState extends State<ExcerciseScreen> {
         backgroundColor: kLightBG,
         body: BlocConsumer<ExcerciseBloc, ExcerciseState>(
           listener: (context, state) {
+            log('listennnnnn listennnn');
             if (state.noInternet) {
               ScaffoldMessenger.of(context).showSnackBar(
                 noInternetSnackbar,
+              );
+            }
+            if (state.showWarninSuperSet) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                wrongSuperSetSnackBar,
               );
             }
           },
@@ -53,8 +66,41 @@ class _ExcerciseScreenState extends State<ExcerciseScreen> {
                         for (final item in state.excercises)
                           Container(
                             key: ValueKey(item),
-                            child: ExcerciseItem(
-                              item: item,
+                            child: Dismissible(
+                              key: ValueKey<String>(DateTime.now()
+                                  .millisecondsSinceEpoch
+                                  .toString()),
+                              background: DisMissibleBg(
+                                isRight: false,
+                                item: item,
+                              ),
+                              secondaryBackground: DisMissibleBg(
+                                item: item,
+                                isRight: true,
+                              ),
+                              child: ExcerciseItem(
+                                item: item,
+                              ),
+                              onDismissed: (direction) {
+                                if (item.orderPrefix!.isNotEmpty) {
+                                  context.read<ExcerciseBloc>().add(
+                                        ExcerciseEvent.removeFromSuperSet(
+                                          index: state.excercises.indexOf(
+                                            item,
+                                          ),
+                                        ),
+                                      );
+                                } else {
+                                  context.read<ExcerciseBloc>().add(
+                                        ExcerciseEvent.createuperSet(
+                                          index: state.excercises.indexOf(
+                                            item,
+                                          ),
+                                          model: item,
+                                        ),
+                                      );
+                                }
+                              },
                             ),
                           ),
                       ],
@@ -73,6 +119,9 @@ class _ExcerciseScreenState extends State<ExcerciseScreen> {
                       openMap();
                     },
                   ),
+                  SlidingUpPaneWidget(
+                    panelController: panelController,
+                  )
                 ],
               );
             }

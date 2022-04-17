@@ -6,6 +6,7 @@ class ExcerciseState with _$ExcerciseState {
     required final bool isSubmitting,
     required final bool noInternet,
     required final bool serverError,
+    required final bool showWarninSuperSet,
     required final List<ExerciseModel> excercises,
   }) = _ExcerciseState;
   factory ExcerciseState.initial() => const ExcerciseState(
@@ -13,5 +14,6 @@ class ExcerciseState with _$ExcerciseState {
         excercises: [],
         serverError: false,
         noInternet: false,
+        showWarninSuperSet: false,
       );
 }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:physics_test/features/excercise/domain/enteties/excercise.dart';
 
@@ -10,12 +8,22 @@ class ExcercieController extends GetxController {
     listOfModels = [];
   }
 
+  bool checkForSuperSet() {
+    for (var item in listOfModels) {
+      if (item.orderPrefix!.isNotEmpty) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   void updateListofExcercise({required List<ExerciseModel> models}) {
     listOfModels = [];
     listOfModels = models;
     update();
   }
 
+  ///Метод для обновления списка при перемещение
   List<ExerciseModel> updateList({
     required int oldIndex,
     required int newIndex,
@@ -29,9 +37,6 @@ class ExcercieController extends GetxController {
       workIndex,
       newList.removeAt(oldIndex),
     );
-    log("oldIndex $oldIndex");
-    log("newIndex $newIndex");
-    log("character test ${String.fromCharCode(97)}");
 
     ///Переменная для хранения очереди
     int startOrder = 1;
@@ -96,7 +101,8 @@ class ExcercieController extends GetxController {
     return newList;
   }
 
-  List<ExerciseModel> deleteFromSuperSet(int index) {
+  ///Метод для удаления элемента из списка суперсетов
+  List<ExerciseModel> deleteFromSuperSet({required int index}) {
     List<ExerciseModel> newList = listOfModels;
     var deleteItem = newList[index];
     int startOrder = 1;
@@ -116,6 +122,30 @@ class ExcercieController extends GetxController {
           }
         }
       }
+      if (item > 0 && item < newList.length - 1) {
+        if (newList[item - 1].orderPrefix!.isNotEmpty &&
+            newList[item + 1].orderPrefix!.isNotEmpty) {
+          newList[item].orderPrefix = 'f';
+        } else if (newList[item - 1].orderPrefix!.isEmpty &&
+            newList[item + 1].orderPrefix!.isEmpty) {
+          newList[item].orderPrefix = '';
+        }
+      }
+
+      ///если элемент первый
+      if (item == 0 &&
+          newList.length > 1 &&
+          newList[item + 1].orderPrefix!.isEmpty) {
+        newList[item].orderPrefix = '';
+      }
+
+      ///Проверка если элемент последный
+      if (item == newList.length) {
+        if (item == newList.length - 1 &&
+            newList[item - 1].orderPrefix!.isEmpty) {
+          newList[item].orderPrefix = '';
+        }
+      }
       if (newList[item].orderPrefix!.isNotEmpty) {
         newList[item].orderPrefix = String.fromCharCode(startCharacterCode);
         startCharacterCode++;
@@ -123,7 +153,70 @@ class ExcercieController extends GetxController {
     }
     listOfModels = [];
     listOfModels = List.from(newList);
-    return newList;
+    return listOfModels;
+  }
+
+  ///Метод для создания суперсетов
+  List<ExerciseModel> createSuperSet({required int index}) {
+    List<ExerciseModel> newList = listOfModels;
+    var deleteItem = newList[index];
+    int startOrder = 1;
+    int startCharacterCode = 97;
+    if (index > 0) {
+      newList[index].orderPrefix = String.fromCharCode(startCharacterCode + 1);
+
+      newList[index - 1].orderPrefix = String.fromCharCode(startCharacterCode);
+    } else {
+      newList[index].orderPrefix = String.fromCharCode(startCharacterCode);
+      newList[index + 1].orderPrefix =
+          String.fromCharCode(startCharacterCode + 1);
+    }
+
+    for (int item = 0; item < newList.length; item++) {
+      newList[item].order = startOrder;
+      if (newList[item].orderPrefix!.isEmpty) {
+        startOrder++;
+      } else {
+        if (item < newList.length - 1) {
+          if (newList[item + 1].orderPrefix!.isEmpty) {
+            startOrder++;
+          }
+        }
+      }
+
+      if (item > 0 && item < newList.length - 1) {
+        if (newList[item - 1].orderPrefix!.isNotEmpty &&
+            newList[item + 1].orderPrefix!.isNotEmpty) {
+          newList[item].orderPrefix = 'f';
+        } else if (newList[item - 1].orderPrefix!.isEmpty &&
+            newList[item + 1].orderPrefix!.isEmpty) {
+          newList[item].orderPrefix = '';
+        }
+      }
+
+      ///если элемент первый
+      if (item == 0 &&
+          newList.length > 1 &&
+          newList[item + 1].orderPrefix!.isEmpty) {
+        newList[item].orderPrefix = '';
+      }
+
+      ///Проверка если элемент последный
+      if (item == newList.length) {
+        if (item == newList.length - 1 &&
+            newList[item - 1].orderPrefix!.isEmpty) {
+          newList[item].orderPrefix = '';
+        }
+      }
+      if (newList[item].orderPrefix!.isNotEmpty) {
+        newList[item].orderPrefix = String.fromCharCode(startCharacterCode);
+        startCharacterCode++;
+      }
+    }
+
+    listOfModels = [];
+    listOfModels = List.from(newList);
+    return listOfModels;
   }
 
   @override

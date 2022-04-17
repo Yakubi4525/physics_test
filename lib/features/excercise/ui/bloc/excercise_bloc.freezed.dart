@@ -28,6 +28,20 @@ class _$ExcerciseEventTearOff {
       newIndex: newIndex,
     );
   }
+
+  _RemoveFromSuperSet removeFromSuperSet({required int index}) {
+    return _RemoveFromSuperSet(
+      index: index,
+    );
+  }
+
+  _CreateSuperSet createuperSet(
+      {required int index, required ExerciseModel model}) {
+    return _CreateSuperSet(
+      index: index,
+      model: model,
+    );
+  }
 }
 
 /// @nodoc
@@ -39,18 +53,24 @@ mixin _$ExcerciseEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int oldIndex, int newIndex) updateListOfModels,
+    required TResult Function(int index) removeFromSuperSet,
+    required TResult Function(int index, ExerciseModel model) createuperSet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int oldIndex, int newIndex)? updateListOfModels,
+    TResult Function(int index)? removeFromSuperSet,
+    TResult Function(int index, ExerciseModel model)? createuperSet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int oldIndex, int newIndex)? updateListOfModels,
+    TResult Function(int index)? removeFromSuperSet,
+    TResult Function(int index, ExerciseModel model)? createuperSet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -58,18 +78,24 @@ mixin _$ExcerciseEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_UpdateList value) updateListOfModels,
+    required TResult Function(_RemoveFromSuperSet value) removeFromSuperSet,
+    required TResult Function(_CreateSuperSet value) createuperSet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateList value)? updateListOfModels,
+    TResult Function(_RemoveFromSuperSet value)? removeFromSuperSet,
+    TResult Function(_CreateSuperSet value)? createuperSet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateList value)? updateListOfModels,
+    TResult Function(_RemoveFromSuperSet value)? removeFromSuperSet,
+    TResult Function(_CreateSuperSet value)? createuperSet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,6 +157,8 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int oldIndex, int newIndex) updateListOfModels,
+    required TResult Function(int index) removeFromSuperSet,
+    required TResult Function(int index, ExerciseModel model) createuperSet,
   }) {
     return started();
   }
@@ -140,6 +168,8 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int oldIndex, int newIndex)? updateListOfModels,
+    TResult Function(int index)? removeFromSuperSet,
+    TResult Function(int index, ExerciseModel model)? createuperSet,
   }) {
     return started?.call();
   }
@@ -149,6 +179,8 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int oldIndex, int newIndex)? updateListOfModels,
+    TResult Function(int index)? removeFromSuperSet,
+    TResult Function(int index, ExerciseModel model)? createuperSet,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -162,6 +194,8 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_UpdateList value) updateListOfModels,
+    required TResult Function(_RemoveFromSuperSet value) removeFromSuperSet,
+    required TResult Function(_CreateSuperSet value) createuperSet,
   }) {
     return started(this);
   }
@@ -171,6 +205,8 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateList value)? updateListOfModels,
+    TResult Function(_RemoveFromSuperSet value)? removeFromSuperSet,
+    TResult Function(_CreateSuperSet value)? createuperSet,
   }) {
     return started?.call(this);
   }
@@ -180,6 +216,8 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateList value)? updateListOfModels,
+    TResult Function(_RemoveFromSuperSet value)? removeFromSuperSet,
+    TResult Function(_CreateSuperSet value)? createuperSet,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -272,6 +310,8 @@ class _$_UpdateList implements _UpdateList {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int oldIndex, int newIndex) updateListOfModels,
+    required TResult Function(int index) removeFromSuperSet,
+    required TResult Function(int index, ExerciseModel model) createuperSet,
   }) {
     return updateListOfModels(oldIndex, newIndex);
   }
@@ -281,6 +321,8 @@ class _$_UpdateList implements _UpdateList {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int oldIndex, int newIndex)? updateListOfModels,
+    TResult Function(int index)? removeFromSuperSet,
+    TResult Function(int index, ExerciseModel model)? createuperSet,
   }) {
     return updateListOfModels?.call(oldIndex, newIndex);
   }
@@ -290,6 +332,8 @@ class _$_UpdateList implements _UpdateList {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int oldIndex, int newIndex)? updateListOfModels,
+    TResult Function(int index)? removeFromSuperSet,
+    TResult Function(int index, ExerciseModel model)? createuperSet,
     required TResult orElse(),
   }) {
     if (updateListOfModels != null) {
@@ -303,6 +347,8 @@ class _$_UpdateList implements _UpdateList {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_UpdateList value) updateListOfModels,
+    required TResult Function(_RemoveFromSuperSet value) removeFromSuperSet,
+    required TResult Function(_CreateSuperSet value) createuperSet,
   }) {
     return updateListOfModels(this);
   }
@@ -312,6 +358,8 @@ class _$_UpdateList implements _UpdateList {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateList value)? updateListOfModels,
+    TResult Function(_RemoveFromSuperSet value)? removeFromSuperSet,
+    TResult Function(_CreateSuperSet value)? createuperSet,
   }) {
     return updateListOfModels?.call(this);
   }
@@ -321,6 +369,8 @@ class _$_UpdateList implements _UpdateList {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateList value)? updateListOfModels,
+    TResult Function(_RemoveFromSuperSet value)? removeFromSuperSet,
+    TResult Function(_CreateSuperSet value)? createuperSet,
     required TResult orElse(),
   }) {
     if (updateListOfModels != null) {
@@ -342,6 +392,312 @@ abstract class _UpdateList implements ExcerciseEvent {
 }
 
 /// @nodoc
+abstract class _$RemoveFromSuperSetCopyWith<$Res> {
+  factory _$RemoveFromSuperSetCopyWith(
+          _RemoveFromSuperSet value, $Res Function(_RemoveFromSuperSet) then) =
+      __$RemoveFromSuperSetCopyWithImpl<$Res>;
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$RemoveFromSuperSetCopyWithImpl<$Res>
+    extends _$ExcerciseEventCopyWithImpl<$Res>
+    implements _$RemoveFromSuperSetCopyWith<$Res> {
+  __$RemoveFromSuperSetCopyWithImpl(
+      _RemoveFromSuperSet _value, $Res Function(_RemoveFromSuperSet) _then)
+      : super(_value, (v) => _then(v as _RemoveFromSuperSet));
+
+  @override
+  _RemoveFromSuperSet get _value => super._value as _RemoveFromSuperSet;
+
+  @override
+  $Res call({
+    Object? index = freezed,
+  }) {
+    return _then(_RemoveFromSuperSet(
+      index: index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_RemoveFromSuperSet implements _RemoveFromSuperSet {
+  const _$_RemoveFromSuperSet({required this.index});
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'ExcerciseEvent.removeFromSuperSet(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _RemoveFromSuperSet &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
+
+  @JsonKey(ignore: true)
+  @override
+  _$RemoveFromSuperSetCopyWith<_RemoveFromSuperSet> get copyWith =>
+      __$RemoveFromSuperSetCopyWithImpl<_RemoveFromSuperSet>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int oldIndex, int newIndex) updateListOfModels,
+    required TResult Function(int index) removeFromSuperSet,
+    required TResult Function(int index, ExerciseModel model) createuperSet,
+  }) {
+    return removeFromSuperSet(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int oldIndex, int newIndex)? updateListOfModels,
+    TResult Function(int index)? removeFromSuperSet,
+    TResult Function(int index, ExerciseModel model)? createuperSet,
+  }) {
+    return removeFromSuperSet?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int oldIndex, int newIndex)? updateListOfModels,
+    TResult Function(int index)? removeFromSuperSet,
+    TResult Function(int index, ExerciseModel model)? createuperSet,
+    required TResult orElse(),
+  }) {
+    if (removeFromSuperSet != null) {
+      return removeFromSuperSet(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_UpdateList value) updateListOfModels,
+    required TResult Function(_RemoveFromSuperSet value) removeFromSuperSet,
+    required TResult Function(_CreateSuperSet value) createuperSet,
+  }) {
+    return removeFromSuperSet(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_UpdateList value)? updateListOfModels,
+    TResult Function(_RemoveFromSuperSet value)? removeFromSuperSet,
+    TResult Function(_CreateSuperSet value)? createuperSet,
+  }) {
+    return removeFromSuperSet?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_UpdateList value)? updateListOfModels,
+    TResult Function(_RemoveFromSuperSet value)? removeFromSuperSet,
+    TResult Function(_CreateSuperSet value)? createuperSet,
+    required TResult orElse(),
+  }) {
+    if (removeFromSuperSet != null) {
+      return removeFromSuperSet(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveFromSuperSet implements ExcerciseEvent {
+  const factory _RemoveFromSuperSet({required int index}) =
+      _$_RemoveFromSuperSet;
+
+  int get index => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$RemoveFromSuperSetCopyWith<_RemoveFromSuperSet> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$CreateSuperSetCopyWith<$Res> {
+  factory _$CreateSuperSetCopyWith(
+          _CreateSuperSet value, $Res Function(_CreateSuperSet) then) =
+      __$CreateSuperSetCopyWithImpl<$Res>;
+  $Res call({int index, ExerciseModel model});
+}
+
+/// @nodoc
+class __$CreateSuperSetCopyWithImpl<$Res>
+    extends _$ExcerciseEventCopyWithImpl<$Res>
+    implements _$CreateSuperSetCopyWith<$Res> {
+  __$CreateSuperSetCopyWithImpl(
+      _CreateSuperSet _value, $Res Function(_CreateSuperSet) _then)
+      : super(_value, (v) => _then(v as _CreateSuperSet));
+
+  @override
+  _CreateSuperSet get _value => super._value as _CreateSuperSet;
+
+  @override
+  $Res call({
+    Object? index = freezed,
+    Object? model = freezed,
+  }) {
+    return _then(_CreateSuperSet(
+      index: index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      model: model == freezed
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as ExerciseModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_CreateSuperSet implements _CreateSuperSet {
+  const _$_CreateSuperSet({required this.index, required this.model});
+
+  @override
+  final int index;
+  @override
+  final ExerciseModel model;
+
+  @override
+  String toString() {
+    return 'ExcerciseEvent.createuperSet(index: $index, model: $model)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _CreateSuperSet &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)) &&
+            (identical(other.model, model) ||
+                const DeepCollectionEquality().equals(other.model, model)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(index) ^
+      const DeepCollectionEquality().hash(model);
+
+  @JsonKey(ignore: true)
+  @override
+  _$CreateSuperSetCopyWith<_CreateSuperSet> get copyWith =>
+      __$CreateSuperSetCopyWithImpl<_CreateSuperSet>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int oldIndex, int newIndex) updateListOfModels,
+    required TResult Function(int index) removeFromSuperSet,
+    required TResult Function(int index, ExerciseModel model) createuperSet,
+  }) {
+    return createuperSet(index, model);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int oldIndex, int newIndex)? updateListOfModels,
+    TResult Function(int index)? removeFromSuperSet,
+    TResult Function(int index, ExerciseModel model)? createuperSet,
+  }) {
+    return createuperSet?.call(index, model);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int oldIndex, int newIndex)? updateListOfModels,
+    TResult Function(int index)? removeFromSuperSet,
+    TResult Function(int index, ExerciseModel model)? createuperSet,
+    required TResult orElse(),
+  }) {
+    if (createuperSet != null) {
+      return createuperSet(index, model);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_UpdateList value) updateListOfModels,
+    required TResult Function(_RemoveFromSuperSet value) removeFromSuperSet,
+    required TResult Function(_CreateSuperSet value) createuperSet,
+  }) {
+    return createuperSet(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_UpdateList value)? updateListOfModels,
+    TResult Function(_RemoveFromSuperSet value)? removeFromSuperSet,
+    TResult Function(_CreateSuperSet value)? createuperSet,
+  }) {
+    return createuperSet?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_UpdateList value)? updateListOfModels,
+    TResult Function(_RemoveFromSuperSet value)? removeFromSuperSet,
+    TResult Function(_CreateSuperSet value)? createuperSet,
+    required TResult orElse(),
+  }) {
+    if (createuperSet != null) {
+      return createuperSet(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateSuperSet implements ExcerciseEvent {
+  const factory _CreateSuperSet(
+      {required int index, required ExerciseModel model}) = _$_CreateSuperSet;
+
+  int get index => throw _privateConstructorUsedError;
+  ExerciseModel get model => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$CreateSuperSetCopyWith<_CreateSuperSet> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$ExcerciseStateTearOff {
   const _$ExcerciseStateTearOff();
 
@@ -349,11 +705,13 @@ class _$ExcerciseStateTearOff {
       {required bool isSubmitting,
       required bool noInternet,
       required bool serverError,
+      required bool showWarninSuperSet,
       required List<ExerciseModel> excercises}) {
     return _ExcerciseState(
       isSubmitting: isSubmitting,
       noInternet: noInternet,
       serverError: serverError,
+      showWarninSuperSet: showWarninSuperSet,
       excercises: excercises,
     );
   }
@@ -367,6 +725,7 @@ mixin _$ExcerciseState {
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get noInternet => throw _privateConstructorUsedError;
   bool get serverError => throw _privateConstructorUsedError;
+  bool get showWarninSuperSet => throw _privateConstructorUsedError;
   List<ExerciseModel> get excercises => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -383,6 +742,7 @@ abstract class $ExcerciseStateCopyWith<$Res> {
       {bool isSubmitting,
       bool noInternet,
       bool serverError,
+      bool showWarninSuperSet,
       List<ExerciseModel> excercises});
 }
 
@@ -400,6 +760,7 @@ class _$ExcerciseStateCopyWithImpl<$Res>
     Object? isSubmitting = freezed,
     Object? noInternet = freezed,
     Object? serverError = freezed,
+    Object? showWarninSuperSet = freezed,
     Object? excercises = freezed,
   }) {
     return _then(_value.copyWith(
@@ -414,6 +775,10 @@ class _$ExcerciseStateCopyWithImpl<$Res>
       serverError: serverError == freezed
           ? _value.serverError
           : serverError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showWarninSuperSet: showWarninSuperSet == freezed
+          ? _value.showWarninSuperSet
+          : showWarninSuperSet // ignore: cast_nullable_to_non_nullable
               as bool,
       excercises: excercises == freezed
           ? _value.excercises
@@ -434,6 +799,7 @@ abstract class _$ExcerciseStateCopyWith<$Res>
       {bool isSubmitting,
       bool noInternet,
       bool serverError,
+      bool showWarninSuperSet,
       List<ExerciseModel> excercises});
 }
 
@@ -453,6 +819,7 @@ class __$ExcerciseStateCopyWithImpl<$Res>
     Object? isSubmitting = freezed,
     Object? noInternet = freezed,
     Object? serverError = freezed,
+    Object? showWarninSuperSet = freezed,
     Object? excercises = freezed,
   }) {
     return _then(_ExcerciseState(
@@ -467,6 +834,10 @@ class __$ExcerciseStateCopyWithImpl<$Res>
       serverError: serverError == freezed
           ? _value.serverError
           : serverError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showWarninSuperSet: showWarninSuperSet == freezed
+          ? _value.showWarninSuperSet
+          : showWarninSuperSet // ignore: cast_nullable_to_non_nullable
               as bool,
       excercises: excercises == freezed
           ? _value.excercises
@@ -483,6 +854,7 @@ class _$_ExcerciseState implements _ExcerciseState {
       {required this.isSubmitting,
       required this.noInternet,
       required this.serverError,
+      required this.showWarninSuperSet,
       required this.excercises});
 
   @override
@@ -492,11 +864,13 @@ class _$_ExcerciseState implements _ExcerciseState {
   @override
   final bool serverError;
   @override
+  final bool showWarninSuperSet;
+  @override
   final List<ExerciseModel> excercises;
 
   @override
   String toString() {
-    return 'ExcerciseState(isSubmitting: $isSubmitting, noInternet: $noInternet, serverError: $serverError, excercises: $excercises)';
+    return 'ExcerciseState(isSubmitting: $isSubmitting, noInternet: $noInternet, serverError: $serverError, showWarninSuperSet: $showWarninSuperSet, excercises: $excercises)';
   }
 
   @override
@@ -512,6 +886,9 @@ class _$_ExcerciseState implements _ExcerciseState {
             (identical(other.serverError, serverError) ||
                 const DeepCollectionEquality()
                     .equals(other.serverError, serverError)) &&
+            (identical(other.showWarninSuperSet, showWarninSuperSet) ||
+                const DeepCollectionEquality()
+                    .equals(other.showWarninSuperSet, showWarninSuperSet)) &&
             (identical(other.excercises, excercises) ||
                 const DeepCollectionEquality()
                     .equals(other.excercises, excercises)));
@@ -523,6 +900,7 @@ class _$_ExcerciseState implements _ExcerciseState {
       const DeepCollectionEquality().hash(isSubmitting) ^
       const DeepCollectionEquality().hash(noInternet) ^
       const DeepCollectionEquality().hash(serverError) ^
+      const DeepCollectionEquality().hash(showWarninSuperSet) ^
       const DeepCollectionEquality().hash(excercises);
 
   @JsonKey(ignore: true)
@@ -536,6 +914,7 @@ abstract class _ExcerciseState implements ExcerciseState {
       {required bool isSubmitting,
       required bool noInternet,
       required bool serverError,
+      required bool showWarninSuperSet,
       required List<ExerciseModel> excercises}) = _$_ExcerciseState;
 
   @override
@@ -544,6 +923,8 @@ abstract class _ExcerciseState implements ExcerciseState {
   bool get noInternet => throw _privateConstructorUsedError;
   @override
   bool get serverError => throw _privateConstructorUsedError;
+  @override
+  bool get showWarninSuperSet => throw _privateConstructorUsedError;
   @override
   List<ExerciseModel> get excercises => throw _privateConstructorUsedError;
   @override

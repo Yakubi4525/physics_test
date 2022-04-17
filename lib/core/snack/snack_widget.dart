@@ -14,11 +14,11 @@ final SnackBar noInternetSnackbar = SnackBar(
   ),
 );
 
-final SnackBar wrongCodeSnackBar = SnackBar(
+final SnackBar wrongSuperSetSnackBar = SnackBar(
   backgroundColor: kBlackColor,
   elevation: 2,
   content: const Text(
-    'Неправильный код :( ',
+    'В списке уже есть супер сет, просто перемещайте туда этот элемент :) ',
   ),
   action: SnackBarAction(
     label: 'Скрыть',
